@@ -2,14 +2,14 @@ import {UUID} from "node:crypto";
 
 export interface TelegramUserViewModel {
     telegramID: number;
-    orgId: UUID;
+    organizationID: UUID;
     notificationStatus: boolean;
     metaInfo?: MetaInfoViewModel;
 }
 
 export class TelegramUserEditModel {
     telegramID!: number;
-    orgId!: UUID;
+    organizationID!: UUID;
     notificationStatus: boolean = true;
     metaInfo?: string;
 }

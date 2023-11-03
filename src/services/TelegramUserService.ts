@@ -10,7 +10,6 @@ export class TelegramUserService {
             let user: TelegramUserViewModel | null = null;
             try {
                 user = await TelegramUserController.GetTelegramUserFull(id);
-                console.log(user)
             } catch (e) {
                 console.log(e)
             }
@@ -21,6 +20,7 @@ export class TelegramUserService {
             editModel.telegramID = id;
             editModel.metaInfo = JSON.stringify(ctx.data.User);
             editModel.notificationStatus = true;
+            editModel.organizationID = 'ec654793-2226-4e80-a1b9-8781fce1878a';
             return await TelegramUserController.CreateTelegramUser(editModel);
         }
         catch (e){

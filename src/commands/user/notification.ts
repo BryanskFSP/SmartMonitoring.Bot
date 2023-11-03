@@ -15,6 +15,7 @@ export const notification = async (
 ): Promise<void> => {
     const editModel = new TelegramUserEditModel()
     editModel.telegramID = user.telegramID;
+    editModel.organizationID = user.organizationID;
 
     if (statusStr) {
         editModel.notificationStatus = statusStr.toLowerCase() === 'true';
