@@ -10,6 +10,7 @@ export class TelegramUserService {
             let user: TelegramUserViewModel | null = null;
             try {
                 user = await TelegramUserController.GetTelegramUserFull(id);
+                console.log(user)
             } catch (e) {
                 console.log(e)
             }

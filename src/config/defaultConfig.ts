@@ -5,5 +5,5 @@ export const defaultConfig = {
     log: '-1001905458624',
   },
 
-  admins: [414985871],
+  admins: [1363116532],
 };
