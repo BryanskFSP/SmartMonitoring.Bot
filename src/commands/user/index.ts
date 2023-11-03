@@ -5,6 +5,7 @@ import {BotClient} from '../../client/client';
 import {profile} from "./profile";
 import {credits} from "./credits";
 import {notification} from "./notification";
+import {services} from "./services";
 
 export const UserCommands: Command[] = [
     {
@@ -22,8 +23,17 @@ export const UserCommands: Command[] = [
         database: true,
         params: [],
         viewInMenu: true,
-        aliases: ['профиль'],
+        aliases: ['назад'],
         execute: profile,
+    },
+    {
+        name: '/services',
+        description: 'Сервисы',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['профиль'],
+        execute: services,
     },
     {
         name: '/credits',

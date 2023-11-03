@@ -1,5 +1,5 @@
 import {axiosInstance} from "./axiosInstance";
-import {TelegramUserEditModel, TelegramUserViewModel} from "../models/TelegramUserViewModel";
+import {TelegramUserEditModel, TelegramUserSession, TelegramUserViewModel} from "../models/TelegramUserViewModel";
 
 export class TelegramUserController {
     private collection: TelegramUserViewModel[] = [];
