@@ -16,7 +16,7 @@ Please, use PostgreSQL in production!
 Open `locales/need_lagguage.yaml` and edit this.
 
 ## Demonstration
-Click this [link](https://t.me/KaboomDonateBot).
+Click this [link](https://t.me/SmartM0nitoringRobot).
 
 
 # TODO:
