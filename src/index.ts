@@ -6,10 +6,11 @@ dotenv.config();
 
 import { startBot } from './client';
 import {createControllers} from "./rest";
-import {onFiveMinutesCron} from "./events/crons/onFiveMinutes";
+import {createAPI} from "./api";
 
 startBot();
 createControllers();
+createAPI();
 
 // import './database/data-source';
 import './events';
