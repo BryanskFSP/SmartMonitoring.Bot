@@ -9,6 +9,7 @@ import {db} from "./db";
 import {logs} from "./logs";
 import {dbDetail} from "./dbDetail";
 import {logsDetail} from "./logsDetail";
+import {logFix} from "./logFix";
 
 export const UserCommands: Command[] = [
     {
@@ -82,6 +83,15 @@ export const UserCommands: Command[] = [
         viewInMenu: true,
         aliases: ['уведомления'],
         execute: notification,
+    },
+    {
+        name: '/logfix',
+        description: 'Fix log',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['log id'],
+        execute: logFix,
     }
 ];
 

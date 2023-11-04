@@ -43,6 +43,9 @@ commands:
       ${dbInfo}
       
       ⚠️ Выберите желаниемое действие с базой данных
+  logFix:
+    text: |
+      Лог отправлен на исправление
   logs:
     button: 📕Открыть логи
     buttons:
@@ -102,4 +105,9 @@ buttons:
   disable: ❌ Выключить
   start: ◀️ В главное меню
   back: ◀️ Назад
+  skip: Пропустить
+  fix: Исправить!
+  sandbox:
+    text: Песочница
+    url: https://postgrespro.ru/docs/postgresql/14/monitoring-stats#MONITORING-PG-STAT-ACTIVITY-VIEW
 

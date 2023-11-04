@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import usersMethods from "./users.methods";
 import statusMethods from "./status.methods";
-import orgMethods from "./org.methods";
+import orgMethods from './org.methods';
 
 export const createAPI = () => {
     const port = process.env.REST_PORT ?? 3000;
