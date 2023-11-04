@@ -5,9 +5,7 @@ import {BotClient} from '../../client/client';
 import {profile} from "./profile";
 import {credits} from "./credits";
 import {notification} from "./notification";
-import {db} from "./db";
 import {logs} from "./logs";
-import {dbDetail} from "./dbDetail";
 import {logsDetail} from "./logsDetail";
 import {logFix} from "./logFix";
 
@@ -29,24 +27,6 @@ export const UserCommands: Command[] = [
         viewInMenu: true,
         aliases: ['назад'],
         execute: profile,
-    },
-    {
-        name: '/db',
-        description: 'Базы данных',
-        database: true,
-        params: [],
-        viewInMenu: true,
-        aliases: ['базы данных'],
-        execute: db,
-    },
-    {
-        name: '/dbdetail',
-        description: 'База данных',
-        database: true,
-        params: [],
-        viewInMenu: true,
-        aliases: ['база данных'],
-        execute: dbDetail,
     },
     {
         name: '/logs',

@@ -24,11 +24,14 @@ export const dbDetail = async (ctx: Context, _, context: string): Promise<void> 
 
 function generateDBButtons(ctx: Context, db: DataBaseViewModel, keyboard: InlineKeyboard, callback?: string) {
     keyboard.row().text(ctx.i18n.t('commands.db.buttons.logs'), `/logsdetail ${db.id}:dbdetail`);
+    keyboard.row().text(ctx.i18n.t('commands.db.buttons.checks'), `/dbstates ${db.id}`);
     keyboard.row().text(ctx.i18n.t('commands.db.buttons.back'), `/${callback ?? 'db'}${callback ? ` ${db!.id}` : ''}`);
 }
 function getDBInfo(ctx: Context, db: DataBaseViewModel): string {
     return `Id: ${db.id}\n` +
+        `Name: ${db.name}\n` +
         `DataBase: ${db.database}\n` +
+        `Host: ${db.host}\n` +
         `description: ${db.description}\n` +
         `Organization: ${db.organizationID}`;
 }

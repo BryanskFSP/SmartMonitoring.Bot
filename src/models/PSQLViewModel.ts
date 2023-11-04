@@ -1,21 +1,4 @@
-interface PSQLViewModelMemoryData {
-    total: string;
-    used: string;
-    avail: string;
-    useProcent: string;
-    type: number;
-}
-interface PSQLViewModelTopData {
-    name: string;
-    operationsCount: number;
-}
-interface PSQLViewModelStatus<T extends { [name: string]: any }> {
-    status: boolean;
-    name: string;
-    data: T;
-}
-
-export interface PSQLViewModel {
+interface PSQLViewModelData {
     datID: number | null;
     datName: string | null;
     pid: number;
@@ -34,6 +17,25 @@ export interface PSQLViewModel {
     query: string | null;
     backend_type: string | null;
 }
+interface PSQLViewModelMemoryData {
+    total: string;
+    used: string;
+    avail: string;
+    useProcent: string;
+    type: number;
+}
+interface PSQLViewModelTopData {
+    name: string;
+    operationsCount: number;
+}
+interface PSQLViewModelStatus<T extends any> {
+    status: boolean;
+    name: string;
+    data: T;
+}
 
+export interface PSQLViewModel extends PSQLViewModelStatus<PSQLViewModelData[]> {}
 export interface PSQLViewModelMemory extends PSQLViewModelStatus<PSQLViewModelMemoryData> {}
 export interface PSQLViewModelTop extends PSQLViewModelStatus<PSQLViewModelTopData[]> {}
+export interface PSQLViewModelCachingRatio extends PSQLViewModelStatus<number> {}
+export interface PSQLViewModelCachingIndexesRatio extends PSQLViewModelStatus<number> {}

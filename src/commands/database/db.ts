@@ -38,14 +38,8 @@ function generateListDB(ctx: Context, dbs: DataBaseViewModel[]): string {
     const messageDbs: string[] = [];
 
     for (const db of dbs) {
-        messageDbs.push(
-            `Name: ${db.name}\n` +
-            `Id: ${db.id}\n` +
-            `DataBase: ${db.database}\n` +
-            `description: ${db.description}\n` +
-            `Organization: ${db.organizationID}`
-        );
+        messageDbs.push(`- ${db.name} [${db.id}]`);
     }
 
-    return messageDbs.length ? messageDbs.join('\n\n') : ctx.i18n.t('commands.dbs.emptyList');
+    return messageDbs.join('\n');
 }
