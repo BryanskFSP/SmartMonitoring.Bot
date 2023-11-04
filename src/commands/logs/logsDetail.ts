@@ -28,6 +28,8 @@ export const logsDetail = async (ctx: Context, _, context?: string): Promise<voi
 };
 
 function generateLogsButtons(ctx: Context, logs: LogsViewModel[], keyboard: InlineKeyboard, db?: DataBaseViewModel, callback?: string) {
+    keyboard.row().text(ctx.i18n.t('commands.log.buttons.fix'), `/logfix`);
+
     if (db) keyboard.row().text(ctx.i18n.t('commands.log.buttons.db'), `/dbdetail ${db.id}:logsdetail`);
 
     keyboard.row().text(ctx.i18n.t('buttons.back'), `/${callback ?? 'logs'}${callback ? ` ${db!.id}` : ''}`);
@@ -35,17 +37,19 @@ function generateLogsButtons(ctx: Context, logs: LogsViewModel[], keyboard: Inli
 function generateLogsMessage(ctx: Context, logs: LogsViewModel[], withId: boolean = false) {
     const messageResult: string[] = [];
 
-    for (const log of Object.entries(logs)) {
+    for (const log of Object.entries(logs.reverse())) {
         messageResult.push(
-            `${log[0]} - ⚠️ ${withId ? `[${log[1].dataBaseID}]` : ''} ${log[1].description}\n` +
+            `⚠️ ${+log[0] + 1} - ${withId ? `[${log[1].dataBaseID}]` : ''} ${log[1].description}\n` +
+            `ID: ${log[1].id}\n` +
             `Recommendation: ${log[1].action}\n` +
-            `Problem Status: ${log[1].fixStatus ? '✅ Solved' : '❌ Not Solved'}`
+            `Problem Status: ${log[1].fixStatus ? '✅ Solved' : '❌ Not Solved'}\n` +
+            `Date: ${(new Date(log[1].createdAt)).toLocaleString()}`
         );
     }
 
     if (messageResult.length > 10) {
-        const message = `... Ещё ${messageResult.length - 15} записей ...`
-        messageResult.splice(15);
+        const message = `... Ещё ${messageResult.length - 10} записей ...`
+        messageResult.splice(10);
         messageResult.push(message);
     }
 

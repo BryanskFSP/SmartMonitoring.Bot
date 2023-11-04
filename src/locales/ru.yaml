@@ -71,6 +71,8 @@ commands:
   logFix:
     text: |
       Лог отправлен на исправление
+    inputId: 🆔 Укажите ID лога, который необходимо исправить
+    idIsNotFound: ❌ ID лога не найдено
   logs:
     button: 📕Открыть логи
     buttons:
@@ -87,6 +89,7 @@ commands:
   log:
     buttons:
       db: 🧱 База данных
+      fix: 📃 Исправить лог
     textAll: |
       📃 Логи по всем базам данных:
       

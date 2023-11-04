@@ -16,6 +16,7 @@ export interface LogsViewModel {
     entityID: string;
     entityJSON: string;
     fixStatus: boolean;
+    createdAt: string;
 }
 export interface LogsViewModelFull {
     telegramID: number;

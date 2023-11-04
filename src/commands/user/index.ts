@@ -5,9 +5,6 @@ import {BotClient} from '../../client/client';
 import {profile} from "./profile";
 import {credits} from "./credits";
 import {notification} from "./notification";
-import {logs} from "./logs";
-import {logsDetail} from "./logsDetail";
-import {logFix} from "./logFix";
 
 export const UserCommands: Command[] = [
     {
@@ -29,24 +26,6 @@ export const UserCommands: Command[] = [
         execute: profile,
     },
     {
-        name: '/logs',
-        description: 'Логи',
-        database: true,
-        params: [],
-        viewInMenu: true,
-        aliases: ['логи'],
-        execute: logs,
-    },
-    {
-        name: '/logsdetail',
-        description: 'Лог по бд',
-        database: true,
-        params: [],
-        viewInMenu: true,
-        aliases: ['лог по бд'],
-        execute: logsDetail,
-    },
-    {
         name: '/credits',
         description: 'О разработчике',
         database: false,
@@ -63,15 +42,6 @@ export const UserCommands: Command[] = [
         viewInMenu: true,
         aliases: ['уведомления'],
         execute: notification,
-    },
-    {
-        name: '/logfix',
-        description: 'Fix log',
-        database: true,
-        params: [],
-        viewInMenu: true,
-        aliases: ['log id'],
-        execute: logFix,
     }
 ];
 
