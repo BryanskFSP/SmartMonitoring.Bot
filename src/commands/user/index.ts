@@ -5,7 +5,10 @@ import {BotClient} from '../../client/client';
 import {profile} from "./profile";
 import {credits} from "./credits";
 import {notification} from "./notification";
-import {services} from "./services";
+import {db} from "./db";
+import {logs} from "./logs";
+import {dbDetail} from "./dbDetail";
+import {logsDetail} from "./logsDetail";
 
 export const UserCommands: Command[] = [
     {
@@ -27,13 +30,40 @@ export const UserCommands: Command[] = [
         execute: profile,
     },
     {
-        name: '/services',
-        description: 'Сервисы',
+        name: '/db',
+        description: 'Базы данных',
         database: true,
         params: [],
         viewInMenu: true,
-        aliases: ['профиль'],
-        execute: services,
+        aliases: ['базы данных'],
+        execute: db,
+    },
+    {
+        name: '/dbdetail',
+        description: 'База данных',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['база данных'],
+        execute: dbDetail,
+    },
+    {
+        name: '/logs',
+        description: 'Логи',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['логи'],
+        execute: logs,
+    },
+    {
+        name: '/logsdetail',
+        description: 'Лог по бд',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['лог по бд'],
+        execute: logsDetail,
     },
     {
         name: '/credits',

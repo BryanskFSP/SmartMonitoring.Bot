@@ -1,5 +1,5 @@
 import {axiosInstance} from "./axiosInstance";
-import {TelegramUserEditModel, TelegramUserSession, TelegramUserViewModel} from "../models/TelegramUserViewModel";
+import {TelegramUserEditModel, TelegramUserViewModel} from "../models/TelegramUserViewModel";
 
 export class TelegramUserController {
     private collection: TelegramUserViewModel[] = [];
@@ -18,37 +18,31 @@ export class TelegramUserController {
 
     public async GetTelegramUsersHash(): Promise<string> {
         let res = await axiosInstance.get("/api/TelegramUser/hash")
-        const data = res.data as string;
-        return data;
+        return res.data as string;
     }
 
     public static async GetTelegramUsersFull(): Promise<TelegramUserViewModel[]> {
         let res = await axiosInstance.get("/api/TelegramUser/full")
-        const data = res.data as TelegramUserViewModel[];
-        return data;
+        return res.data as TelegramUserViewModel[];
     }
 
     public static async GetTelegramUser(id: number): Promise<TelegramUserViewModel> {
         let res = await axiosInstance.get(`/api/TelegramUser/${id.toString()}`)
-        const data = res.data as TelegramUserViewModel;
-        return data;
+        return res.data as TelegramUserViewModel;
     }
 
     public static async GetTelegramUserFull(id: number): Promise<TelegramUserViewModel> {
         let res = await axiosInstance.get(`/api/TelegramUser/${id.toString()}/full`)
-        const data = res.data as TelegramUserViewModel;
-        return data;
+        return res.data as TelegramUserViewModel;
     }
 
     public static async UpdateTelegramUser(id: number, editModel: TelegramUserEditModel): Promise<TelegramUserViewModel> {
         let res = await axiosInstance.put(`/api/TelegramUser/${id.toString()}`, editModel)
-        const data = res.data as TelegramUserViewModel;
-        return data;
+        return res.data as TelegramUserViewModel;
     }
 
     public static async CreateTelegramUser(editModel: TelegramUserEditModel): Promise<TelegramUserViewModel> {
         let res = await axiosInstance.post(`/api/TelegramUser`, editModel)
-        const data = res.data as TelegramUserViewModel;
-        return data;
+        return res.data as TelegramUserViewModel;
     }
 }
