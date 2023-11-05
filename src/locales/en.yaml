@@ -118,7 +118,7 @@ commands:
       🔧 The database has been cleaned up ${actionName}
     textAdditional:
       clearscript: by script
-      crearvacuum: by Vacuum method
+      clearvacuum: by Vacuum method
   logFix:
     text: |
       The log has been sent for correction
