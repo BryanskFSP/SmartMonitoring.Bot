@@ -45,7 +45,7 @@ export const commandHandler = async (ctx: Context): Promise<void> => {
     let user: any;
 
     if (command.database) {
-        user = await TelegramUserService.getOrCreateUser(ctx);
+        user = await TelegramUserService.getUser(ctx);
     } else user = null;
     try {
         if (command)

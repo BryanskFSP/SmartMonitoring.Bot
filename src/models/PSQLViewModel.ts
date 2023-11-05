@@ -21,13 +21,32 @@ interface PSQLViewModelMemoryData {
     total: string;
     used: string;
     avail: string;
-    useProcent: string;
     type: number;
 }
 interface PSQLViewModelTopData {
     name: string;
     operationsCount: number;
 }
+interface PSQLViewModelBlockedProcessData {
+    lockedItem: string;
+    warningDuration: number;
+    blockedPID: number;
+    blockedQuery: string;
+    blockedMode: string;
+}
+interface PSQLViewModelStatsIndexData {
+    relName: string;
+    seqScan: number;
+    idxScan: number;
+    indexStat: number;
+}
+interface PSQLViewModelStatsOldIndexData {
+    indexrelname: string;
+    relname: string;
+    stats: number;
+}
+
+
 interface PSQLViewModelStatus<T extends any> {
     status: boolean;
     name: string;
@@ -39,3 +58,8 @@ export interface PSQLViewModelMemory extends PSQLViewModelStatus<PSQLViewModelMe
 export interface PSQLViewModelTop extends PSQLViewModelStatus<PSQLViewModelTopData[]> {}
 export interface PSQLViewModelCachingRatio extends PSQLViewModelStatus<number> {}
 export interface PSQLViewModelCachingIndexesRatio extends PSQLViewModelStatus<number> {}
+
+export interface PSQLViewModelWasted extends PSQLViewModelStatus<number> {}
+export interface PSQLViewModelBlockedProcesses extends PSQLViewModelStatus<PSQLViewModelBlockedProcessData[]> {}
+export interface PSQLViewModelStatsIndexes extends PSQLViewModelStatus<PSQLViewModelStatsIndexData[]> {}
+export interface PSQLViewModelStatsOldIndexes extends PSQLViewModelStatus<PSQLViewModelStatsOldIndexData[]> {}

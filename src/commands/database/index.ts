@@ -6,6 +6,8 @@ import {dbDetail} from "./dbDetail";
 import {dbState} from "./dbState";
 import {dbStates} from "./dbStates";
 import {dbRepair} from "./dbRepair";
+import {dbStatuses} from "./dbStatuses";
+import {dbStatus} from "./dbStatus";
 
 export const UserCommands: Command[] = [
     {
@@ -52,6 +54,24 @@ export const UserCommands: Command[] = [
         viewInMenu: true,
         aliases: ['вбд'],
         execute: dbRepair,
+    },
+    {
+        name: '/dbstatuses',
+        description: 'Стутусы базы данных',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['сыбд'],
+        execute: dbStatuses,
+    },
+    {
+        name: '/dbstatus',
+        description: 'Статус базы данных',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['сбд'],
+        execute: dbStatus,
     },
 ];
 

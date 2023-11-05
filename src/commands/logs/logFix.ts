@@ -2,7 +2,9 @@ import {Context} from "../../utils/types";
 import {InlineKeyboard} from "grammy";
 import {LogsController} from "../../rest/LogsController";
 
-export const logFix = async (ctx: Context, _, id: string): Promise<void> => {
+export const logFix = async (ctx: Context, _, context: string): Promise<void> => {
+    let [id = undefined, callback = undefined] = context ? context.split(':') : [];
+
     if (!id) {
         await ctx.session.addData('command', ctx.data.Message);
         throw ctx.i18n.t('commands.logFix.inputId');

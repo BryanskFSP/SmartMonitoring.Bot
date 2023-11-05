@@ -1,10 +1,10 @@
 import {axiosInstance} from "./axiosInstance";
 import {
-    PSQLViewModel,
+    PSQLViewModel, PSQLViewModelBlockedProcesses,
     PSQLViewModelCachingIndexesRatio,
     PSQLViewModelCachingRatio,
-    PSQLViewModelMemory,
-    PSQLViewModelTop
+    PSQLViewModelMemory, PSQLViewModelStatsIndexes, PSQLViewModelStatsOldIndexes,
+    PSQLViewModelTop, PSQLViewModelWasted
 } from "../models/PSQLViewModel";
 import tools from "../utils/tools";
 
@@ -44,16 +44,20 @@ export class PSQLController {
     public static async ClearSpaceVacuum(dbID: string): Promise<void> {
         await axiosInstance.post(`/api/PSQL/space/clear/vacuum${buildQueryParams({ dbID })}`);
     }
-    public static async GetBlockedProcesses(dbID: string): Promise<void> {
-        await axiosInstance.post(`/api/PSQL/processes/locked${buildQueryParams({ dbID })}`);
+    public static async GetBlockedProcesses(dbID: string): Promise<PSQLViewModelBlockedProcesses> {
+        const res = await axiosInstance.post(`/api/PSQL/processes/locked${buildQueryParams({ dbID })}`);
+        return res.data as PSQLViewModelBlockedProcesses
     }
-    public static async GetIndexesStats(dbID: string): Promise<void> {
-        await axiosInstance.post(`/api/PSQL/stats/indexes${buildQueryParams({ dbID })}`);
+    public static async GetIndexesStats(dbID: string): Promise<PSQLViewModelStatsIndexes> {
+        const res = await axiosInstance.post(`/api/PSQL/stats/indexes${buildQueryParams({ dbID })}`);
+        return res.data as PSQLViewModelStatsIndexes;
     }
-    public static async GetOutdatedIndexesStats(dbID: string): Promise<void> {
-        await axiosInstance.post(`/api/PSQL/stats/indexes/outdated${buildQueryParams({ dbID })}`);
+    public static async GetOutdatedIndexesStats(dbID: string): Promise<PSQLViewModelStatsOldIndexes> {
+        const res = await axiosInstance.post(`/api/PSQL/stats/indexes/outdated${buildQueryParams({ dbID })}`);
+        return res.data as PSQLViewModelStatsOldIndexes;
     }
-    public static async GetWastedBytes(dbID: string): Promise<void> {
-        await axiosInstance.post(`/api/PSQL/wasted${buildQueryParams({ dbID })}`);
+    public static async GetWastedBytes(dbID: string): Promise<PSQLViewModelWasted> {
+        const res = await axiosInstance.post(`/api/PSQL/wasted${buildQueryParams({ dbID })}`);
+        return res.data as PSQLViewModelWasted;
     }
 }

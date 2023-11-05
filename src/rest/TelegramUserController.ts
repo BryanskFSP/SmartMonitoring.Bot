@@ -41,8 +41,8 @@ export class TelegramUserController {
         return res.data as TelegramUserViewModel;
     }
 
-    public static async CreateTelegramUser(editModel: TelegramUserEditModel): Promise<TelegramUserViewModel> {
-        let res = await axiosInstance.post(`/api/TelegramUser`, editModel)
+    public static async CreateTelegramUser(editModel: TelegramUserEditModel, inviteCode: string): Promise<TelegramUserViewModel> {
+        let res = await axiosInstance.post(`/api/TelegramUser?inviteCode=${inviteCode}`, editModel)
         return res.data as TelegramUserViewModel;
     }
 }
