@@ -8,6 +8,8 @@ import {dbStates} from "./dbStates";
 import {dbRepair} from "./dbRepair";
 import {dbStatuses} from "./dbStatuses";
 import {dbStatus} from "./dbStatus";
+import {dbActions} from "./dbActions";
+import {dbAction} from "./dbAction";
 
 export const UserCommands: Command[] = [
     {
@@ -72,6 +74,24 @@ export const UserCommands: Command[] = [
         viewInMenu: true,
         aliases: ['сбд'],
         execute: dbStatus,
+    },
+    {
+        name: '/dbactions',
+        description: 'Действия с базой данных',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['дсбд'],
+        execute: dbActions,
+    },
+    {
+        name: '/dbaction',
+        description: 'Статус базы данных',
+        database: true,
+        params: [],
+        viewInMenu: true,
+        aliases: ['сбд'],
+        execute: dbAction,
     },
 ];
 
