@@ -21,7 +21,7 @@ export const dbState = async (ctx: Context, _, context: string): Promise<void> =
 
     await ctx.SendOrEditMessage(
         ctx.i18n.t(`commands.dbState.text${isError ? 'Error' : ''}`, {
-            checkName: getCheckName(checkName),
+            checkName: getCheckName(ctx, checkName),
             dbName: db.name,
             dbStatus: checkData!.status ?? ''
         }),
@@ -36,18 +36,18 @@ function generateStateButtons(ctx: Context, dbID: string, keyboard: InlineKeyboa
     if (isError) keyboard.row().text(ctx.i18n.t('commands.dbState.buttons.repair'), `/dbrepair ${dbID}`);
     keyboard.row().text(ctx.i18n.t('buttons.back'), `/dbstates ${dbID}`);
 }
-function getCheckName(checkName: string): string {
+function getCheckName(ctx: Context, checkName: string): string {
     switch (checkName) {
         case 'full':
-            return 'всех элементов';
+            return ctx.i18n.t('commands.dbState.textAdditional.full');
         case 'memory':
-            return 'памяти';
+            return ctx.i18n.t('commands.dbState.textAdditional.memory');
         case 'states':
-            return 'процессов';
+            return ctx.i18n.t('commands.dbState.textAdditional.states');
         case 'cr':
-            return 'кэша';
+            return ctx.i18n.t('commands.dbState.textAdditional.cr');
         case 'cir':
-            return 'индексов кэша';
+            return ctx.i18n.t('commands.dbState.textAdditional.cir');
         default:
             return 'UnknownType';
     }

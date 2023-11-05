@@ -48,7 +48,7 @@ function generateLogsMessage(ctx: Context, logs: LogsViewModel[], withId: boolea
     }
 
     if (messageResult.length > 10) {
-        const message = `... Ещё ${messageResult.length - 10} записей ...`
+        const message = ctx.i18n.t('commands.log.additional', { countRecords: messageResult.length - 10 });
         messageResult.splice(10);
         messageResult.push(message);
     }

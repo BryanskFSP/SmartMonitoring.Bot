@@ -1,0 +1,193 @@
+texts:
+  error: ⛔️ An error has occurred, we will fix it soon.
+  notFound: ⚠️ Alas, nothing was found.
+  credits: |
+    🎩 This bot was created for the competition of the FSP of Russia in Product programming.
+    👮‍♂️ All rights reserved.
+    ©️ Please do not use it without the author's permission.
+    
+
+commands:
+  notFound: |
+    ⚠️ The written command was not found.
+    ✍️ Try again!
+  help:
+    short: his bot helps administrators solve problems with the PostgreSQL database.
+  start:
+    isNotAuth: 🔑 Enter the invitation code to register
+    userErrorCreate: 🔒 User creation error. Invalid invitation code!
+    text: |
+      👋 Hello!
+      
+      😉 Welcome to the SmartMonitoring bot!
+      ℹ️ Here you can find out about problems with the database, work with errors, and so on.
+      
+      🫵 Please select a menu item
+  dbs:
+    button: 🧱 List of databases
+    buttons:
+      open: ➡️ ${dbName}
+      back: ⬅️ Back
+    text: |
+      🧱 List of databases
+      
+      ✅ Available databases:
+      ${dbList.length ? dbList : '<List is empty>'}
+  db:
+    buttons:
+      back: ⬅️ Back
+      logs: 📃 Database logs
+      statuses: 📈 Table statistics
+      actions: 🔧 Actions
+      checks: ⚡ Database checks
+    emptyList: ⚠️ The list of databases is empty.
+    text: |
+      🧱 Database ${dbName}
+    
+      📃 Info:
+      ${dbInfo}
+      
+      ⚠️ Select the desired action with
+  dbState:
+    buttons:
+      repair: 🔧 Restore
+    text: |
+      ⚡ ${checkName} has been checked
+      🧱 Database: ${dbName}
+      🔧 Status: ${dbStatus}
+    textError: |
+      ⚡❌ Verification error ${checkName}
+      🧱 Database: ${dbName}
+  
+      🔧 Click on the button below to start the recovery!
+    textAdditional:
+      full: all elements
+      memory: memory
+      states: processes
+      cr: cache
+      cir: cache indexes
+  dbStates:
+    buttons:
+      full: ⚙️ Check everything
+      memory: 💽 Check memory
+      states: 💻 Check processes
+      cachingRatio: 💾 Check the caching coefficient
+      cachingIndexesRatio: 0️⃣ Check index caching coefficient
+    text: |
+      ⚡ Select the desired check for the database [${dbName}]
+  dbStatus:
+    text: |
+      📈 Information on ${checkName}
+      🧱 Database: ${dbName}
+    
+      ${dbStatus.length ? dbStatus : '<Information not found>'}
+    textAdditional:
+      memory: memory usage
+      top: using processes
+      cr: using caching
+      cir: using index caching
+      wasted: bloating the database
+      bp: blocked processes
+      si: indexes
+      soi: old indexes
+    empty:
+      bp: ⚡ Blocked processes not found
+  dbStatuses:
+    buttons:
+      memory: 💽 Memory usage
+      top: 💻 Usage
+      cachingRatio: 💾 Caching coefficient
+      cachingIndexesRatio: 0️⃣ Index caching coefficient
+      blockedProcesses: 🔒 Blocked processes
+      statsIndexes: 0️⃣ Index scan ratio
+      statsOldIndexes: 0️⃣ Scan ratio by old indexes
+      wasted: 🌀 Bloating the base
+    text: |
+      📈 Select the desired section of the dbRepair database tables
+  dbRepair:
+    text: 🔧 Database recovery started successfully
+    textError: 🔧❌ Database recovery error. Try again
+  dbActions:
+    buttons:
+      script: 📄 Clearing memory by script
+      vacuum: 🌀 Vacuum cleaning of memory
+    text: |
+      🔧 Select the desired action with the dbAction database from
+  dbAction:
+    text: |
+      🔧 The database has been cleaned up ${actionName}
+    textAdditional:
+      clearscript: by script
+      crearvacuum: by Vacuum method
+  logFix:
+    text: |
+      The log has been sent for correction
+    inputId: 🆔 Specify the ID of the log that needs to be corrected
+    idIsNotFound: ❌ Log ID not found
+  logs:
+    button: 📕Open logs
+    buttons:
+      back: ⬅
+      go: ➡
+      db: 📃 Logs from ${dbName}
+      all: 📃 All logs
+    notFound: ⚠️ Alas, no logs were found.
+    text: |
+      📃 Select the database for which you want to view logs!
+
+      ✅ Available databases:
+      ${dbList}
+  log:
+    buttons:
+      db: 🧱 Database
+      fix: 📃 Fix the log
+    textAll: |
+      📃 Logs for all databases:
+      
+      ${logs}
+    textOnce: |
+      📃 Database logs: ${dbName}:
+      
+      ${logs}
+    empty: 💭 Logs not found
+    additional: ...More ${countRecords} entries...
+  notification:
+    enable: ✅ Enable notifications
+    enabled: ✅ You have successfully enabled notifications!
+    disable: ❌ Turn off notifications
+    disabled: ❌ You have successfully turned off notifications!
+    warning: |
+      
+      ⚠️ Attention!️ We recommend enabling notifications!
+      If notifications are disabled, then you will not be able to receive operational information.
+    text: |
+      Currently notifications ${user.notificationStatus ? '✅ Enabled' : '❌ Disabled'}.
+      ${user.notificationStatus ? '' : warningText }
+  profile:
+    button: 🛂 Open Profile
+    text: |
+      🛂 Your profile:
+      
+      📰 Notifications: ${user.notificationStatus ? '✅ Enabled' : '❌ Disabled'}
+      ${user.notificationStatus ? '' : warningText }
+      
+      If you want to change the status, then click on the button below.
+  credits:
+    button: 😱 About the bot
+
+buttons:
+  append: ➕
+  reduce: ➖
+  delete: ❌ Delete
+  yes: ✅ Yes
+  no: ❌ No
+  enable: ✅ Enable
+  disable: ❌ Switch off
+  start: ◀️ To the main menu
+  back: ◀️ Back
+  skip: Skip
+  fix: Fix it!
+  sandbox:
+    text: Sandbox
+    url: https://newestsm.kaboom.pro/sandbox/06d145e6-8439-47aa-b8cd-c7cd26c8cfe6
+

@@ -12,7 +12,7 @@ export const dbAction = async (ctx: Context, _, context: string): Promise<void> 
 
     await ctx.SendOrEditMessage(
         ctx.i18n.t(`commands.dbAction.text`, {
-            actionName: getActionName(actionName)
+            actionName: getActionName(ctx, actionName)
         }),
         {
             reply_markup: keyboard,
@@ -24,12 +24,12 @@ export const dbAction = async (ctx: Context, _, context: string): Promise<void> 
 function generateActionButtons(ctx: Context, dbID: string, keyboard: InlineKeyboard) {
     keyboard.row().text(ctx.i18n.t('buttons.back'), `/dbactions ${dbID}`);
 }
-function getActionName(checkName: string): string {
+function getActionName(ctx: Context, checkName: string): string {
     switch (checkName) {
         case 'clearscript':
-            return 'скриптом';
+            return ctx.i18n.t('commands.dbAction.textAdditional.clearscript');
         case 'clearvacuum':
-            return 'методом Вакуума';
+            return ctx.i18n.t('commands.dbAction.textAdditional.clearvacuum');
         default:
             return 'UnknownType';
     }

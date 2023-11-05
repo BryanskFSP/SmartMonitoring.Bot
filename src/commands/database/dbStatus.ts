@@ -13,9 +13,9 @@ export const dbStatus = async (ctx: Context, _, context: string): Promise<void> 
 
     await ctx.SendOrEditMessage(
         ctx.i18n.t(`commands.dbStatus.text`, {
-            checkName: getCheckName(checkName),
+            checkName: getCheckName(ctx, checkName),
             dbName: db.name,
-            dbStatus: await getCheckData(checkName, id)
+            dbStatus: await getCheckData(ctx, checkName, id)
         }),
         {
             reply_markup: keyboard,
@@ -26,29 +26,29 @@ export const dbStatus = async (ctx: Context, _, context: string): Promise<void> 
 function generateStateButtons(ctx: Context, dbID: string, keyboard: InlineKeyboard) {
     keyboard.row().text(ctx.i18n.t('buttons.back'), `/dbstatuses ${dbID}`);
 }
-function getCheckName(checkName: string): string {
+function getCheckName(ctx: Context, checkName: string): string {
     switch (checkName) {
         case 'memory':
-            return 'использованию памяти';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.memory');
         case 'top':
-            return 'использованию процессов';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.top');
         case 'cr':
-            return 'использованию кэшированию';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.cr');
         case 'cir':
-            return 'использованию кэшированию индексов';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.cir');
         case 'wasted':
-            return 'раздутию базы данных';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.wasted');
         case 'bp':
-            return 'заблокированных процессам';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.bp');
         case 'si':
-            return 'индексам';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.si');
         case 'soi':
-            return 'старым индексам';
+            return ctx.i18n.t('commands.dbStatus.textAdditional.soi');
         default:
             return 'UnknownType';
     }
 }
-async function getCheckData(checkName: string, id: string): Promise<string> {
+async function getCheckData(ctx: Context, checkName: string, id: string): Promise<string> {
     switch (checkName) {
         case 'memory':
             const tableMemory = (await PSQLController.GetTablesMemory(id)).data;
@@ -70,7 +70,7 @@ async function getCheckData(checkName: string, id: string): Promise<string> {
             return `Wasted: ${wastedBytes.data} Bytes`;
         case 'bp':
             const blockedProcesses = (await PSQLController.GetBlockedProcesses(id)).data;
-            if (!blockedProcesses.length) return '⚡ Заблокированные процессы не найдены';
+            if (!blockedProcesses.length) return ctx.i18n.t('commands.dbStatus.empty.bp');
             return blockedProcesses.map(el =>
                 `Locked Item: ${el.lockedItem}\n` +
                 `Warning Duration: ${el.warningDuration}\n` +
